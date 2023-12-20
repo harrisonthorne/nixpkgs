@@ -18,6 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-MzugH6r/jY5Kg7GIR8/o1BN36FenBzMnqrPUceJmbPs=";
   };
 
+  # obs development headers depend on uthash but they are not in the output
+  env.NIX_CFLAGS_COMPILE = "-I${obs-studio.src}/deps/uthash";
+
   nativeBuildInputs = [ cmake ];
   buildInputs = [ libcaption obs-studio qtbase ];
 
